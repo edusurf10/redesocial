@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Admin, type: :model do
   it "Admin is valid" do
-    admin = Admin.new(email: "admin@admin.com", password: "123456") #criar instancia admin
+    admin = Admin.new(name: "Admin", email: "admin@admin.com", password: "123456") #criar instancia admin
 
     expect(admin.email).to eql "admin@admin.com"
     expect(admin).to be_valid

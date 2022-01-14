@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-Admin.create(email: 'admin@admin.com', password: '123456')
+Admin.create(name: "Admin", email: 'admin@admin.com', password: '123456')
 if Admin.last.email == 'admin@admin.com'
   puts "admin created" 
 elsif
