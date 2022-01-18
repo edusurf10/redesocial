@@ -1,0 +1,14 @@
+<% if record && record.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading"><%= t('.error_on_save') %></h4>
+    <ul>
+    <%= record.errors.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% else %>
+  <%= record.errors.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+<% end %>

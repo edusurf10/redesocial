@@ -1,10 +1,27 @@
 class Admin::AdminsController < AdminController
   def index
-    @admins = Admin.order(id: :desc)
+    @admins = Admin.order(id: :asc)
   end
 
-  def def new
+  def new
     @admin = Admin.new
   end
+
+  def create
+    @admin = Admin.new(form_params)
+
+    if @admin.save
+      redirect_to admin_admins_path, notice: "Admin criado"
+    else
+      render :new, notice: "Erro ao criar Admin"
+    end
+
+  end
   
+  private
+
+  def form_params
+    params.require(:admin).permit(:name, :email, :password, :password_confirmation)
+  end
+
 end
