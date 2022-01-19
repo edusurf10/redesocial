@@ -1,28 +1,30 @@
 <div class="card" style="background-color:#f6f6f6;">
   <div class="card-body">
-    <%= form_with( model: [:admin, admin], local: true ) do |f| %>
+    <%= form_with(model: [:admin, admin]) do |f| %>
       <%= render "layouts/form_errors", record: admin %>
       <div class="form-group">
-        <%= f.label :name, "Nome" %><br />
-        <%= f.text_field :name, class: "form-control"%>
+        <label>Nome</label>
+        <%= f.text_field :name, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :email, "Email" %><br />
-        <%= f.email_field :email, class: "form-control"%>
+        <label>E-mail</label>
+        <%= f.email_field :email, class: "form-control" %>
       </div>
-      <div class="form-group">
-        <%= f.label :password, "Senha" %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %>
-        <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :password_confirmation, "Confirmar Senha" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-      </div>
-      <br />
-      <%= f.submit "Salvar", class: "btn btn-primary" %>
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label>Senha</label>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label>Confirmar Senha</label>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+          </div>
+        </div>
+      </div><br />
+      <button type="submit" class="btn btn-primary">Salvar</button>
     <% end %>
   </div>
 </div>

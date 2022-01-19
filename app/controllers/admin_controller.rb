@@ -7,7 +7,7 @@ class AdminController < ApplicationController
 
   def current_admin?
     if current_admin.present?
-      @admin = current_admin
+      @cadmin = current_admin
       true
     elsif
       false
