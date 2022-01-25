@@ -1,13 +1,14 @@
 class Admin::AdminsController < AdminController
-
+  before_action :set_admin, only: [:edit, :update, :destroy]
+  ################INDEX############################
   def index
     @admins = Admin.order(id: :asc)
   end
-#############################################
+  ################NEW##############################
   def new
     @admin = Admin.new
   end
-#############################################
+  ################CREATE###########################
   def create
     @admin = Admin.new(form_params)
     if @admin.save
@@ -16,31 +17,35 @@ class Admin::AdminsController < AdminController
       render :new
     end
   end
-#############################################
+  ##################EDIT##############################
   def edit
-    @admin = Admin.find(params[:id])
   end
-#############################################
+  ##################UPDATE###########################
   def update
-    @admin = Admin.find(params[:id])
-    params = form_params
-    if params[:password].blank? && params[:password_confirmation].blank?
-      params.except(:password, :password_confirmation)
-    end
-    # logger.debug "Params para update: #{params.inspect}"
+    params = form_params[:password].blank? && form_params[:password_confirmation].blank? ? form_params.except(:password, :password_confirmation) : form_params
     if @admin.update(params)
-      logger.debug "Update feito com sucesso, redirecionando"
       redirect_to admin_admins_path
+      logger.debug("#{@admin.name} Atualizado com sucesso!")
     else
-      logger.debug "Update falhou com os parametros: #{params.inspect}"
       render :edit
+      logger.debug("#{@admin.name} Falha ao atualizar!")
+      logger.debug("params enviado : === :#{params}")
     end
   end
-#############################################
+  ##################DESTROY#########################
+  def destroy
+    @admin.destroy
+    redirect_to admin_admins_path
+  end
+  ##############PRIVATE##############################
   private
 
   def form_params
     params.require(:admin).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def set_admin
+    @admin = Admin.find(params[:id])
   end
 
 end

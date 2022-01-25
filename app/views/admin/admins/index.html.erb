@@ -10,6 +10,7 @@
       <th scope="col">Email</th>
       <th scope="col">Criado em</th>
       <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,11 @@
       <td><%= admin.email %></td>
       <td><%= admin.created_at %></td>
       <td><%= link_to "Editar", edit_admin_admin_path(admin), class: "btn btn-warning btn-sm" %></td>
+      <% if @cadmin.email != admin.email %>
+        <td><%= link_to "Deletar", admin_admin_path(admin), data: { "turbo-method": :delete, turbo_confirm: "Certeza que deseja excluir essa conta?" }, class: "btn btn-danger btn-sm" %></td>
+      <% else %>
+        <td></td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>
