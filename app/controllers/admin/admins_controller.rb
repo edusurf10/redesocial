@@ -25,11 +25,8 @@ class Admin::AdminsController < AdminController
     params = form_params[:password].blank? && form_params[:password_confirmation].blank? ? form_params.except(:password, :password_confirmation) : form_params
     if @admin.update(params)
       redirect_to admin_admins_path
-      logger.debug("#{@admin.name} Atualizado com sucesso!")
     else
       render :edit
-      logger.debug("#{@admin.name} Falha ao atualizar!")
-      logger.debug("params enviado : === :#{params}")
     end
   end
   ##################DESTROY#########################
