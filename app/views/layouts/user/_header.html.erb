@@ -15,7 +15,7 @@
         <a class="nav-link" href="#">Quem eu posso seguir</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Meu perfil</a>
+        <%= link_to "Meu Perfil", user_profile_path, class: current_page?(user_profile_path)? "nav-link active" : "nav-link" %>
       </li>
     </ul>
     <div class="nav-item d-flex">
