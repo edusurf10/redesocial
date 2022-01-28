@@ -1,5 +1,6 @@
 <h5 class="card-header">
-  <%= image_tag(user.avatar, class: "ui-w-100-forced rounded-circle mr-3", style: "width: 90px; height: 90px") %> <%= user.name %>
+  <%= image_tag(user.avatar, class: "ui-w-100-forced rounded-circle mr-3", style: "width: 90px; height: 90px") %>
+  <%= link_to user.name, user == current_user ? user_profile_path : user_user_path(user) %>
   <% if user.id != current_user.id && !current_user.following.pluck(:id).include?(user.id)%>
     <%= link_to "Seguir", user_follow_path(user), data: { turbo_method: :post }, class: "badge rounded-pill bg-success btn ml-4"%><br />
   <% elsif current_user.following.pluck(:id).include?(user.id) %>
