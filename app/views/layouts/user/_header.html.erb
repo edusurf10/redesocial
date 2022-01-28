@@ -6,13 +6,13 @@
        <%= link_to "Timeline", root_path, class: current_page?(root_path)? "nav-link active" : "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Followers</a>
+        <%= link_to "Seguidores", user_followers_path, class: current_page?(user_followers_path)? "nav-link active" : "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Following</a>
+        <%= link_to "Seguindo", user_following_path, class: current_page?(user_following_path)? "nav-link active" : "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Quem eu posso seguir</a>
+        <%= link_to "Quem eu posso seguir", user_potential_to_follow_path, class: current_page?(user_potential_to_follow_path)? "nav-link active" : "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to "Meu Perfil", user_profile_path, class: current_page?(user_profile_path)? "nav-link active" : "nav-link" %>

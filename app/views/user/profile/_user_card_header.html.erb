@@ -1,0 +1,12 @@
+<h5 class="card-header">
+  <%= image_tag(user.avatar, class: "ui-w-100-forced rounded-circle mr-3", style: "width: 90px; height: 90px") %> <%= user.name %>
+  <% if user.id != current_user.id && !current_user.following.pluck(:id).include?(user.id)%>
+    <%= link_to "Seguir", user_follow_path(user), data: { turbo_method: :post }, class: "badge rounded-pill bg-success btn ml-4"%><br />
+  <% elsif current_user.following.pluck(:id).include?(user.id) %>
+     <%= link_to "Deixar de Seguir", user_unfollow_path(user), data: { turbo_method: :post }, class: "badge rounded-pill bg-danger btn ml-4"%><br />
+  <% else %>
+    <br />
+  <% end %>
+  <span style="font-size:14px;">Seguidores:</span> <span class="badge bg-info"><%= user.followers.count %></span>
+  <span style="font-size:14px;">Seguindo:</span> <span class="badge bg-info"><%= user.following.count %></span>
+</h5>
