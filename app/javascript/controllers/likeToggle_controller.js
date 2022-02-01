@@ -1,10 +1,9 @@
 import $ from "jquery";
-console.log("AAAAAAAA");
-window.addEventListener("turbolinks:load", function() {
-  console.log("BBBBBBB");
-  
+
+$(document).on("turbolinks:load", function() {
+  console.log("AAAAAA")
   $(".like-toggle").click( () => {
-    var button = $(this);
+    var button = $(".like-toggle");
     console.log(`LIKE CLICADO ${button.attr("id")}`);
     $.ajax({
       type: "POST",
@@ -23,5 +22,5 @@ window.addEventListener("turbolinks:load", function() {
       buttonIcon.css("color", "white")
     }
     button.next().html(data.likesCount);
-  }
+  };
 });
